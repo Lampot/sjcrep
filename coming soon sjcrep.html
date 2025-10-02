@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Merriweather', serif; background-color: #0a1229; color: white; }
+    .hero-bg { background: url('https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6346-wpcf_1200x700.jpg') center/cover no-repeat; }
+    .overlay-gradient { background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,18,41,0.9)); }
+    .fade-bottom {
+      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: cover;
+      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      mask-repeat: no-repeat;
+      mask-size: cover;
+    }
+    .pulse-text {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- Hero Section -->
+<section class="hero-bg h-screen flex items-center justify-center text-center relative">
+  <div class="overlay-gradient absolute inset-0"></div>
+  <div class="relative z-10 p-10 md:p-20 text-center" data-aos="fade-up">
+    <h1 class="text-6xl md:text-7xl font-extrabold mb-6">Coming Soon</h1>
+    <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-6">We’re working hard to bring you something amazing. Stay tuned for updates!</p>
+    <p class="text-yellow-400 font-bold text-lg pulse-text">We will deliver a GREAT new page soon!</p>
+    <a href="sjcrep.com" class="mt-8 inline-block px-8 py-4 border border-white hover:bg-yellow-500 hover:text-black transition rounded-lg">Back to Home</a>
+  </div>
+</section>
+
+<!-- Optional Footer -->
+<footer class="py-6 text-center bg-[#111b3a] mt-auto">
+  <p class="text-sm">© 2025 DYLNMBRY | Website under construction. All rights reserved.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>

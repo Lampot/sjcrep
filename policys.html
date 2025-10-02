@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St John's College Hastings Policies</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Merriweather', serif; background-color: #0a1229; color: white; }
+    .navbar-scrolled { background-color: #0a1229; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+    .hero-bg { background: url('https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6346-wpcf_1200x700.jpg') center/cover no-repeat; }
+    .card-hover:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.5); }
+    .overlay-gradient { background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,18,41,0.9)); }
+    .fade-bottom {
+      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: cover;
+      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+      mask-repeat: no-repeat;
+      mask-size: cover;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- Navbar -->
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://i.imgur.com/wHSCEDM.png" alt="Logo" class="h-10">
+      <h1 class="text-xl font-bold tracking-wide">ST JOHNS STUDENT REPRESENTATIVE</h1>
+    </div>
+    <ul class="flex space-x-6">
+      <li><a href="sjcrep.com" class="hover:text-yellow-400 transition">Home</a></li>
+      <li><a href="#policies" class="hover:text-yellow-400 transition">Policies</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-bg h-screen flex items-center justify-center text-center relative">
+  <div class="overlay-gradient absolute inset-0"></div>
+  <div class="relative z-10 p-10 md:p-20 text-center">
+    <h2 class="text-5xl md:text-6xl font-extrabold mb-6">ARE YOU IN TROUBLE? KNOW YOUR RIGHTS!</h2>
+    <p class="text-lg max-w-2xl mx-auto mb-6">Here is a list of all the school rules, simplified to help you know your rights so they cannot be violated, YOU HAVE A RIGHT TOO SEE THESE and put them into action!</p>
+    <a href="#policies" class="px-6 py-3 border border-white hover:bg-yellow-500 hover:text-black transition rounded-lg">Learn More</a>
+  </div>
+</section>
+<!-- Yellow Banner Section -->
+<section class="w-full bg-yellow-500 py-4">
+  <p class="text-black text-center text-lg font-semibold">
+    YOU ARE NEVER REQUIRED TO GIVE A WRITTEN OR VERBAL STATEMENT OVER ANY INCIDENT, THE SCHOOL CAN NEVER FORCE YOU TO PROVIDE A STATEMENT!
+  </p>
+</section>
+
+<!-- Policies Section -->
+<section id="policies" class="py-20 bg-[#0a1229] text-center">
+  <h3 class="text-4xl font-bold mb-12">School Policies</h3>
+<p class="text-lg max-w-2xl mx-auto mb-6">These are the policys taken strait from the SchoolDocs website</p>
+
+  <!-- Back Button -->
+  <div id="backButtonContainer" class="mb-8 hidden">
+    <button id="backButton" class="px-6 py-3 border border-white hover:bg-yellow-500 hover:text-black transition rounded-lg">
+      ← Back to Policies
+    </button>
+  </div>
+
+  <!-- Policy Cards -->
+  <div id="policyCards" class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="border-4 border-white p-6 card-hover cursor-pointer" data-policy="health">
+      <h4 class="text-2xl font-bold mb-4">Health & Safety</h4>
+      <p class="text-white text-sm">Click to read the full Health & Safety policy.</p>
+    </div>
+
+    <div class="border-4 border-white p-6 card-hover cursor-pointer" data-policy="behaviour">
+      <h4 class="text-2xl font-bold mb-4">Behaviour & Discipline</h4>
+      <p class="text-white text-sm">Click to read the full Behaviour & Discipline policy.</p>
+    </div>
+
+    <div class="border-4 border-white p-6 card-hover cursor-pointer" data-policy="attendance">
+      <h4 class="text-2xl font-bold mb-4">Attendance</h4>
+      <p class="text-white text-sm">Click to read the full Attendance policy.</p>
+    </div>
+
+    <div class="border-4 border-white p-6 card-hover cursor-pointer" data-policy="privacy">
+      <h4 class="text-2xl font-bold mb-4">Privacy & Data</h4>
+      <p class="text-white text-sm">Click to read the full Privacy & Data policy.</p>
+    </div>
+
+    <div class="border-4 border-white p-6 card-hover cursor-pointer" data-policy="it">
+      <h4 class="text-2xl font-bold mb-4">IT & Online Safety</h4>
+      <p class="text-white text-sm">Click to read the full IT & Online Safety policy.</p>
+    </div>
+
+    <div class="border-4 border-white p-6 card-hover cursor-pointer" data-policy="curriculum">
+      <h4 class="text-2xl font-bold mb-4">Curriculum & Learning</h4>
+      <p class="text-white text-sm">Click to read the full Curriculum policy.</p>
+    </div>
+  </div>
+
+  <!-- Policy Content -->
+  <div id="policyContent" class="max-w-4xl mx-auto mt-8 text-left hidden">
+    <p id="policyText" class="text-white text-sm"></p>
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll('#policyCards .card-hover');
+  const policyCards = document.getElementById('policyCards');
+  const backButtonContainer = document.getElementById('backButtonContainer');
+  const backButton = document.getElementById('backButton');
+  const policyContent = document.getElementById('policyContent');
+  const policyText = document.getElementById('policyText');
+
+  // Policy content placeholders
+  const policies = {
+    health: `The board and the principal work together to manage health, safety, and welfare at St Johns College in ways that ensure all duties under the Health and Safety at Work Act 2015 are met, as well as the Education and Training Act 2020 requirement that the school is a physically and emotionally safe place. As the PCBU at St Johns College, the board fulfils their primary duty of care. Individual board members (including the principal) exercise due diligence as officers to ensure the board meets its health and safety obligations.
+    
+The responsibility for day-to-day health and safety management at the school is delegated to the principal, with support from the board. This does not transfer the duties of the board but takes into account the nature of school operations and the position of individual officers under the Health and Safety at Work Act. The principal may further delegate health and safety tasks.
+
+The board engages with workers and ensures workers have appropriate representation and involvement in health and safety matters. See Worker Engagement, Participation, and Representation.
+
+The principal ensures that everyone involved with school operations is informed about health and safety matters, including their health and safety responsibilities, relevant health and safety policies and procedures, and updates or changes to health and safety practices. See Health and Safety Induction and Training.
+
+Anyone can raise concerns by following school procedures. See Risk Management and Raising Concerns and Complaints.`,
+    behaviour: `The Education and Training Act 2020 provides guidelines for managing serious student misconduct, including:
+
+Stand-downs: Temporary removal from school for up to five days.
+
+Suspensions: Removal from school for a longer period, requiring a formal, legal process infrount of the board.
+
+Exclusions and Expulsions: Permanent removal from school, with specific procedures and requirements for re-enrolment. 
+
+3. Prohibited Forms of Discipline
+
+New Zealand law strictly prohibits corporal punishment in schools. Teachers and school staff are not allowed to use physical force as a form of discipline. This includes hitting, slapping, or any form of physical correction. Such actions are considered assault under the Crimes Act 1961.
+
+Behaviour Management
+Our school provides a safe physical and emotional environment for students and staff. We promote a culture of care and protection of students, and we prioritise this when managing behaviour and dealing with behaviour incidents.
+
+
+At St John's College we promote positive student behaviour and de-escalation of challenging behaviour. We accept that challenging behaviour is a result of student distress, and respond accordingly. For more information, see Reducing Student Distress.
+
+We also expect our students, staff, and the wider school community to maintain high standards of conduct, and for visitors, parents, and whānau to model positive behaviour for students. Bullying and harassment within the school community is taken seriously, and is dealt with through our behaviour management strategies. We advise our community of procedures to follow if they have any concerns or complaints.
+
+Behaviour management guidelines
+
+At St John's College all staff are made aware of the following behaviour management guidelines.
+
+We make a clear statement of acceptable and unacceptable behaviour known to all staff, parents/caregivers, and students.
+We communicate to all members of the school the responsibility to recognise bullying, harassment, and inappropriate behaviour, and how to take appropriate action when necessary.
+Staff (including relievers, coaches, tutors, etc.) maintain positive learning environments and relationships within the school community.
+We consistently apply our behaviour management strategies in all cases of unacceptable behaviour, and try to maintain the dignity of the student at all times.
+Staff manage challenging behaviour appropriately and use de-escalation techniques if student behaviour poses a danger to themselves or others. Physical restraint may only be used by teachers or authorised staff members to prevent imminent harm, and only according to our physical restraint guidelines.
+We action procedures outlined by the Ministry of Education for stand-down, suspension, or exclusion in cases of extreme misconduct, continual disobedience, and/or behaviour risking serious harm.
+We work with parents/caregivers, staff, and outside agencies if necessary, to plan individual programmes and strategies for students with particular behavioural needs. These students may be managed outside our behaviour management strategies.
+Seclusion and corporal punishment is prohibited.
+Our school follows the same behaviour management and disciplinary procedures for international students as for domestic students. Any additional or different conditions for international students (such as around accommodation, attendance, or visa requirements) are outlined in the enrolment contract.
+
+Parent/Caregiver concerns
+
+If a parent/caregiver has concerns about incidents between students, staff, or other parents/caregivers, they should contact our school directly to voice their concerns through the appropriate channels. We do not encourage parents/caregivers to approach students, their whānau, or other members of the school community to privately discuss behaviour issues. This also applies to incidents that occur out of school time or off school grounds but when students are still connected with the school e.g. at camp or on school trips, and while wearing school uniform, or travelling to and from school.
+
+Concerns involving relatives of staff or board members
+
+If a behaviour issue or a concern arises at school that involves the child or relative of a currently employed staff or board member and another student or group of students, the staff or board member is not involved in its resolution. A delegated staff member with no relationship to the student or relative manages the incident.
+
+Sexual Behaviour in Students
+To make our school a physically and emotionally safe place for all students and staff, we have a policy to manage student sexual behaviour in the day-to-day school environment (Education and Training Act 2020, s.127; NELP Priority 1).
+
+Appropriate management depends on whether the behaviour is normal for the age and developmental stage of the student and/or if it is harmful to them or others. We are guided in our understanding of normal, concerning, and harmful sexual behaviour for each age group by current, reliable health information (see Resources below).
+
+The school guides staff in how to manage student sexual behaviour as part of their regular child protection training. Staff are advised to share any concerns early to prevent harm and to ensure that they do not make decisions in isolation.
+
+Normal sexual behaviour
+
+Normal sexual behaviour may be inappropriate in the school environment. This can be managed by teaching about sexual, emotional, and physical development, body and relationship boundaries, and consent. We do this through:
+
+the health curriculum
+our behaviour management expectations and strategies
+our digital safety policies
+safety programmes that encourage students to consider sexual behaviour and boundaries.
+Our school has a robust pastoral programme for the recognition and reporting of abuse.
+
+This proactive approach helps to protect students and reduces the risk of concerning and harmful sexual behaviour, and sexual harassment and violence.
+
+Concerning or harmful sexual behaviour
+
+Concerning or harmful sexual behaviour puts the student who shows such behaviour and other students and staff members at risk of physical and emotional harm. Such behaviour may indicate that the student is being exposed to inappropriate, unsafe, or abusive content or behaviour outside of school. Concerning and harmful sexual behaviours need intervention and may require escalation to external agencies.
+
+Sexual harassment and violence
+
+Sexual behaviour in students may include acts of sexual harassment and/or sexual violence against other students or staff. This may occur at school or outside of school, and sexual harassment may also occur online. We take all reports of sexual harassment and violence seriously and aim to respond with care and sensitivity.
+
+Recording Photos, Video, and Sound
+At St John's College, we record and share photos, video, and sound in a safe and respectful way to ensure we do not breach the Privacy Act 2020, the Copyright Act 1994, the Harmful Digital Communications Act 2015, the Crimes Act 1961, and our codes of conduct and bullying policies. These conditions apply to recording and sharing photos, video, and sound on school grounds, at school-related events or activities, and online.
+
+Key requirements
+
+No one may:
+
+take photos/video that amount to an intimate visual recording under the Crimes Act 1961 (s 216G)
+record photos/video/audio in circumstances where any individual could reasonably expect privacy
+use or share photos/video/audio in ways that breach any of our codes of conduct and/or bullying and harassment policies.
+We recognise that anyone can take photos/videos/audio recordings at school events that are in public areas (e.g. sporting events on public fields). This does not include performances of musical concerts, shows, and plays due to copyright, and events where we have notified people attending that they may not take photos/videos/audio recordings. See Copyright.
+
+School processes
+
+Using a hidden device to record photos, video, or sound is not allowed at school or school-related activities or events. If a school meeting or phone call is recorded, all participants are informed in advance and told how the recording will be used.
+
+Our staff inform students before taking photos or making a recording of them, or discuss this with parents/caregivers if needed. Students can choose not to be included in photos or recordings, or parents/caregivers can supply this preference. Also see Distance Learning.
+
+Before sharing recorded material, the school seeks permission from parents/caregivers, students, and staff members who appear in the images or recordings. We also expect our school community to consider privacy before sharing recordings that contain other people's personal information. See Public Sharing of Personal Information.
+
+We expect everyone to use personal digital devices responsibly. Students wanting to record photos, video, or sound in class to support their learning need permission from the class teacher and must ensure they consider the privacy of others. Recordings may only be used for personal study, must not be duplicated or shared, and must be deleted when no longer needed. See Cellphones and Other Personal Digital Devices and Surrender and Retention of Digital Devices.`,
+    attendance: `St John's College is transitioning towards the new attendance model and attendance management plan required by the Ministry of Education. Changes will be made before term 1 2026.
+
+St John's College has procedures to record and monitor attendance, and to identify and follow up concerns. We share attendance expectations with students and their parents/caregivers, and staff are responsible for reminding students of these expectations.
+
+
+Recording attendance
+
+We record attendance accurately to ensure all students are accounted for, including for emergency situations. The school provides attendance data to the Ministry of Education each day, as required by the Education and Training Act 2020 and Education (School Attendance) Regulations 2024. We monitor absence patterns using our student management system and notify parents/caregivers of any concerns.
+
+Classroom teachers, learning support staff, and office staff work together to ensure attendance is recorded correctly. Relievers, itinerant teachers, and specialist teachers provide attendance information as necessary to the relevant teacher, or directly to the school office.
+
+We record students as present or absent using Ministry of Education attendance codes. An absence may be justified (e.g. for medical reasons) or unjustified (e.g. for an unapproved holiday or other unsatisfactory reason), and we record this in our attendance register.
+
+Monitoring attendance
+
+The school office receives attendance information from classroom teachers and/or relievers, itinerant, or specialist teachers, and is responsible for checking and updating attendance information (e.g. due to students arriving late or going home early). Office staff follow up absences, monitor for changes or trends in student attendance, and coordinate with relevant staff as needed.
+
+Staff are encouraged to report any attendance concerns to the principal.
+
+The Ministry of Education collects attendance data from the school, including:
+
+the proportion of students who attend regularly
+students with five or more full days of unjustified absence in a term
+absences remaining unexplained at the end of each week.
+Student absences
+
+Parents/Caregivers are expected to notify the school as soon as possible (before or during the school day) if their child will be absent. A reason for absence must be provided no later than the end of the school week. St John's College will contact parents/caregivers directly if no explanation is provided for student absence.
+
+
+Under the Education and Training Act 2020 (s 45), the principal may allow a student to be absent from school for up to five days if there is a justified reason for absence (e.g. due to illness, a funeral or tangihanga, or other approved reason at the discretion of the school). For planned absences, requests must be made to the principal at least one week before the planned event.
+
+The principal has discretion to approve or deny requests, based on criteria including:
+
+the benefit to education for the student (including qualifications and experience of course providers as relevant)
+the length of time away from regular school programmes that the activity will require.
+If a student does not arrive at school or goes missing during the day (including from an EOTC event), we check there are no errors in how attendance information was recorded or updated (e.g. if a student has gone home due to illness). If necessary, we follow up with parents/guardians and/or emergency contacts. We may also follow our Missing Student Procedure.
+
+Following up unexplained absences
+
+St John's College takes all reasonable steps to ensure students attend school while it is open, including following up unexplained absences.
+
+Our follow-up actions may include:
+
+analysing attendance data for patterns of absence
+contacting parents/caregivers to outline attendance expectations
+meeting with students and their parents/caregivers to discuss strategies for improving attendance
+discussing school programmes with relevant staff to better meet the needs of students at risk of disengagement.
+Under the Education and Training Act (s 48), the board may appoint an attendance officer who has authority to follow up absences with students and their parents/caregivers directly.`,
+    privacy: `Personal Information
+Our school respects the privacy rights of students, staff, parents/guardians, and other members of the school community under the Privacy Act 2020. We manage personal information in accordance with the information privacy principles of the Privacy Act, and follow the processes below for collecting, protecting, accessing and correcting, and sharing personal information.
+
+Collecting personal information
+
+St John's College only collects personal information when necessary for the operation of the school (Principle 1).
+
+Our purpose for collecting personal information includes:
+
+confirming the identity of students, staff, parents/guardians/caregivers
+communicating with our school community and celebrating achievement
+protecting the health, safety, and wellbeing of students, staff, and others at school and school activities
+providing a high standard of teaching and learning, programmes, and services
+maintaining financial, employment, and student records
+sharing information with government or other agencies (e.g. for funding, support, or contractual/legislative obligations).
+We collect information in a fair and lawful way that respects individual privacy as much as possible, especially the privacy of children or young people. We collect personal information directly from the person concerned, or from an appropriate person if needed (e.g. parent/guardian/caregiver). If a person does not want to disclose information, we may collect it from other sources if necessary (Principles 1 and 2).
+
+If we collect information from another source, we let the person concerned (or their parent/guardian/caregiver) know about this collection as soon as practicable, and we take reasonable steps to ensure whatever information we have collected is accurate before use (Principle 8).
+
+To comply with Principle 3, we let people know, as appropriate:
+
+why we are collecting the information
+who will have access to the information
+whether it is compulsory or optional for them to provide the information
+what will happen if the information is not supplied
+their rights to access and correct the information.
+If it is not practicable at the time then we will inform people as soon as practicable after collection. We are not required to inform people if it is not necessary under the exceptions to Principle 3.
+
+Protecting personal information
+
+At St John's College, we protect personal information from loss; and unauthorised access, use, or disclosure (Principle 5). This may include but is not limited to:
+
+restricting access to personal information (e.g. limiting access to staff who require it as part of their duties, or ensuring discussions of sensitive information are confidential)
+sharing information in keeping with the information privacy principles of the Privacy Act, and other relevant legislation (e.g. Oranga Tamariki Act 1989)
+assigning and/or using unique identifiers only when necessary, and not using the same identifier as other agencies (except for the National Student Number)
+holding physical documents securely (e.g. in a locked cabinet)
+holding electronic information securely (i.e. computer security and cybersecurity)
+destroying any documents with personal information when no longer needed (Principle 9), as required under the Public Records Act 2005.
+The school also has a security surveillance system installed to deter vandalism and damage, and improve student and staff safety. The school follows guidelines to ensure that all aspects of the surveillance system i.e., recording, access, storage, and monitoring comply with the Privacy Act.
+
+Accessing and correcting personal information
+
+Under the Privacy Act, anyone has the right to request access to their personal information, and ask for it to be corrected (Principles 6 and 7). Personal information may be requested by the person the information is about, or someone who represents them or is legally responsible for them (e.g. parents/guardians). They have a right to access this information unless it falls under the exceptions listed in the Privacy Act (s 49–53). See Personal Information Access and Correction.
+
+We take reasonable steps to make sure personal information is correct, up to date, relevant, and not misleading (Principle 8). Individuals may request correction of their information. If we have a reason not to correct it, a record of the request is held with the information.
+
+Sharing personal information
+
+At times, St John's College may need to share personal information (e.g. with parents/guardians, volunteers, third-party service providers, external agencies, the public). We comply with the information privacy principles of the Privacy Act 2020 and other relevant legislation when sharing the personal information of an individual. We only share information if sharing it is directly related to the purpose for which it was collected, if it is authorised by the person concerned, or if sharing is allowed by one of the other exceptions in the Act (Principle 11).
+
+To support teaching, learning, and communication with our school community, we may need to share personal information about individuals within the school community (e.g. an email address or phone number) with third parties. We require third parties to maintain confidentiality.
+
+Where appropriate and practicable, we seek authorisation/consent before sharing information. We ensure that the person is fully informed about:
+
+why we are sharing the information
+who we are sharing the information with
+what the information will be used for
+how we protect their information.
+If a student is not able to provide authorisation/consent, we seek it from their parent/guardian. We keep a record of any agreements to share information. We consider any request to withdraw authorisation/consent to information sharing.
+
+Information about a person is not given to a third party without the person's authorisation/consent, unless:
+
+the information was collected for this purpose
+the information is publicly available
+it is allowed by other legislation or legal rulings, including court orders
+it is necessary for the protection of the person or public health and safety
+the information will be used in way that does not identify the individual.
+We consider whether to tell a person as soon as practicable after their personal information is shared with a third party. Our decision is based on the following factors:
+
+the information being shared
+the reasons for sharing the information and any need for confidentiality
+any request from the third party to keep sharing confidential
+if disclosing that we have shared information might risk or threaten any person’s health or safety
+the importance of transparency and openness.
+Specific sharing provisions
+
+Third party providers
+
+St John's College only works with third-party service providers if we are satisfied that their privacy policy, settings, and controls are secure and managed appropriately, and that the information we provide will only be used for the purpose it was gathered. We only disclose information to third-party providers outside New Zealand if we are satisfied that they are either subject to the Privacy Act (because they do business in New Zealand) or are subject to comparable privacy laws in their own country and will ensure they adequately protect the information (Principle 12).
+
+We consult with our school community about the introduction and use of services from third-party service providers where this is relevant to personal information and use all reasonable endeavours to accommodate those who wish to opt out of a particular service due to privacy concerns (e.g. IT software).`,
+    it: `Digital Technology and Online Safety
+St John's College is committed to providing a digital and online environment that is physically and emotionally safe, inclusive, and free from racism, discrimination, and bullying (Education and Training Act 2020, National Education and Learning Priorities (NELP), and Health and Safety at Work Act 2015). We recognise the vital role of digital technology in learning and how it impacts student wellbeing, so we take all reasonably practicable steps to ensure its safe and responsible use. Our strategies aim to prevent digital incidents and maintain student wellbeing and safety both at and outside the school.
+
+Our digital technology policies and procedures apply to every member of the school community using digital technology, including staff, students, parents/caregivers, volunteers, contractors, visitors, and the board. They apply to digital technology owned by the school or owned privately and used at school or any other location for a school-based activity. They also include off-site access to the school network if applicable.
+
+Our approach to digital technology aims to reduce barriers to education for all students (NELP: Objective 2). St John's College supports students to access the resources needed to participate in online learning. We recognise that although a student may have a device, their internet access may be limited.
+
+Safe and responsible use of digital technology
+
+In keeping with our whole-school approach to student wellbeing, St John's College promotes safe and responsible use of digital technology as a shared responsibility.
+
+St John's College is a Netsafe School, which means the school has completed a Netsafe Schools Review and joined Netsafe's programme to establish, develop, and promote online safety, citizenship, and wellbeing in the school community.
+
+At St John's College, we maintain a safe and responsible digital environment by:
+
+setting and sharing clear requirements and expectations about acceptable and unacceptable digital use
+ensuring that members of the school community commit to these guidelines by signing the appropriate use agreement outlining requirements and expectations
+reviewing these digital technology use agreements annually
+educating students about the digital world, including understanding privacy and copyright laws, staying safe online, and protecting digital devices
+encouraging our students to be confident, capable, and competent in their use of digital technology by supporting them to:
+develop digital literacy skills
+be aware of digital technology challenges and manage them effectively
+demonstrate honesty, integrity, and ethical behaviour in their use of digital technology in line with digital citizenship
+using helpful resources (e.g. Netsafe) and supporting staff training and professional development
+encouraging students and staff to continue practising positive digital technology behaviours when not at the school.
+We also create a safe digital and online environment through these supporting policies:
+
+Staff Social Media
+School Social Media
+Computer Security and Cybersecurity
+Privacy Policy
+Public Sharing of Personal Information
+Surrender and Retention of Personal Digital Devices
+The school maintains the right to monitor, access, and review digital technology use on school equipment and the school network, including school-owned email accounts. The school may use a third party, such as Linewize, to monitor school internet use. This may include browsing history.
+Recording and Reporting Accidents, Injuries, and Illness	https://stjohns.schooldocs.co.nz/12358.htm
+`,
+    curriculum: `Curriculum and Student Achievement Policy
+St John's College provides a high quality education for young men, grounded in Gospel values within the Catholic and Marist traditions.
+
+The board of St John's College supports every student to be able to attain their highest possible standard in educational achievement. St John's College has particular regard to the Statement of National Education and Learning Priorities (NELP), and the board gives effect to its obligations in relation to curriculum and performance measures, teaching and learning programmes, and monitoring and reporting of student progress (Education and Training Act 2020, s 127).
+
+The school partners with whānau and the wider school community to design and deliver education that responds to student needs, and sustains student identities, languages, and cultures (NELP: Priority 2). Our curriculum development process includes community consultation where required, including consultation on the delivery of the health curriculum. See Health Education.
+
+As required by the Education and Training Act (s 103), we ensure that students receive good guidance and counselling, and provide students with appropriate career education and guidance. We support the future of learning and work and ensure the curriculum is relevant to current opportunities for our students (NELP: Objective 4). See Career Guidance and Learning Pathways.
+
+Curriculum and performance measures
+
+St John's College gives effect to curriculum statements and national performance measures set out by the Minister of Education.
+
+The board, through the principal and staff:
+
+ensures foundation curriculum policy statements are reflected in our teaching and learning
+ensures that students develop knowledge, understanding, and skills in each area of The New Zealand Curriculum or Te Marautanga o Aotearoa.
+Also see Assessing Student Learning.
+
+Teaching and learning programmes
+
+At St John's College, teaching and learning is based on The New Zealand Curriculum or Te Marautanga o Aotearoa, and we regularly review our curriculum plan and programmes.
+
+St John's College aims to instil in each child and young person an appreciation of the importance of Te Tiriti o Waitangi and te reo Māori. We ensure our plans, policies, and local curriculum reflect local tikanga Māori, mātauranga Māori, and te ao Māori (Education and Training Act, s 5.4 and s 127). St John's College works to localise our school curriculum and ensure school programmes reflect the identity and aspirations of our Māori community.
+
+In support of the NELP, we work to meaningfully incorporate te reo Māori and tikanga Māori into school programmes (NELP Priority 5), and we support staff to develop their teaching capability, knowledge, and skills to meet the needs of ākonga Māori (NELP Priority 6).
+
+Our school ensures every student gains sound foundation skills, including language, literacy, and numeracy (NELP: Objective 2, Priority 4).
+
+We aim to reduce barriers to education for all, including for Māori and Pacific students, disabled students, and those with learning support needs (NELP: Objective 2, Priority 3). See Māori Educational Achievement and Learning Support.
+
+Catholic curriculum
+
+The board ensures that our school curriculum is presented in light of the Gospel, and emphasises the core principles of Catholic social teaching. We ensure that our Religious Education and Health Education programmes meet the requirements of our proprietor and integration agreement, and the New Zealand Catholic Bishops Conference (NZCBC).
+
+Supporting resources and programmes
+
+We use learning resources that support student progress and achievement, are up to date and accurate, and are relevant to the curriculum. We ensure that resources are age-appropriate and accessible to their intended audience. Teachers encourage open and respectful discussion within the classroom and ensure the classroom is a safe and inclusive environment.
+
+
+Home learning
+
+At St John's College, we provide home learning as an extension of our teaching and learning programme. Teachers set home learning that is appropriate to each year level. We communicate expectations to students and follow up with parents and caregivers as required.
+
+Monitoring and reporting on student progress and achievement
+
+St John's College monitors, evaluates, and reports on the performance of all students at our school as required by the Education and Training Act (s 165).
+
+The principal and staff monitor and evaluate the performance of students and our teaching programmes through good quality assessment or aromatawai information – see Assessing Student Learning
+We share information about student progress and achievement with students and their parents and whānau – see Reporting about Student Progress and Achievement.
+We report to the Ministry of Education and the school community on the performance of all students in our annual report – see School Planning and Reporting.
+We celebrate student progress and achievement with students, their whānau, and our wider school community through school awards and events. See Public Sharing of Personal Information.
+
+We recognise the importance of regular attendance in helping students achieve their educational potential, and follow our attendance procedures as required to improve attendance levels. See Student Attendance.`
+  };
+
+  // Show single policy on click
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const key = card.dataset.policy;
+      // Convert newlines to <br> for line breaks
+      policyText.innerHTML = policies[key].replace(/\n/g, '<br><br>');
+      policyCards.classList.add('hidden');
+      backButtonContainer.classList.remove('hidden');
+      policyContent.classList.remove('hidden');
+    });
+  });
+
+  // Back button functionality
+  backButton.addEventListener('click', () => {
+    policyCards.classList.remove('hidden');
+    backButtonContainer.classList.add('hidden');
+    policyContent.classList.add('hidden');
+    policyText.innerHTML = "";
+  });
+</script>
+
+
+
+
+
+<footer class="py-6 text-center bg-[#111b3a]">
+  <p class="text-sm">© 2025 DYLNMBRY | This website is privately owned and operated by Dylan Mabry. It is not affiliated with, endorsed by, or connected to St John's College Hastings or any of its staff, students, or associated entities.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if(window.scrollY > 50) navbar.classList.add('navbar-scrolled');
+    else navbar.classList.remove('navbar-scrolled');
+  });
+</script>
+
+</body>
+</html>
