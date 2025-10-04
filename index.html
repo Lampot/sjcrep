@@ -51,7 +51,12 @@
     <a href="#priorities" class="px-6 py-3 border border-white hover:bg-yellow-500 hover:text-black transition rounded-lg">Learn More</a>
   </div>
 </section>
-
+<!-- Yellow Banner Section -->
+<section class="w-full bg-yellow-500 py-4">
+  <p class="text-black text-center text-lg font-semibold">
+    THIS ADMINISTRATION IS COMMITTED TO TRANSPARENCY, ACCOUNTABILITY, AND PUTTING STUDENTS FIRST, NO MORE HIDING POLICYS, NOW THEY'RE EASY TO FIND!
+  </p>
+</section>
 <!-- Administration -->
 <section id="admin" class="py-20 bg-[#0a1229] text-center">
   <h3 class="text-4xl font-bold mb-12" data-aos="fade-down">The Administration</h3>
@@ -98,7 +103,7 @@
   </a>
 
   <!-- News -->
-  <a href="https://example.com/news" class="group block" data-aos="fade-left">
+  <a href="https://sjcrep.com/coming-soon" class="group block" data-aos="fade-left">
     <div class="border-4 border-white relative overflow-hidden">
       <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6360-wpcf_1200x700.jpg"
            class="w-full h-96 object-cover block transform transition-transform duration-500 group-hover:scale-105">
@@ -142,5 +147,53 @@ All content on this website represents the personal opinions, views, and intenti
 
 </body>
 </html>
+<!-- Pop-up Corner -->
+<div id="freedom-popup" class="fixed bottom-6 left-6 w-80 md:w-96 bg-cover bg-center rounded-xl overflow-hidden shadow-2xl border-4 border-yellow-400 z-50 transform translate-x-0 translate-y-0 transition-all duration-500"
+     style="background-image: url('https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6346-wpcf_1200x700.jpg');">
+  <div class="bg-black bg-opacity-70 p-6">
+    <div class="flex justify-between items-start">
+      <h4 id="popup-header" class="text-xl font-bold text-yellow-400 mb-2">Support Freedom!</h4>
+      <button id="popup-close" class="text-white font-bold">&times;</button>
+    </div>
+    <p id="popup-text" class="text-white mb-4">Click here with 125 other patriots if you stand with our administration to restore St John back on track and crush the disastrous radical leftist agenda that’s been holding us back!</p>
+    <button id="popup-endorse" class="inline-block w-full text-center bg-yellow-400 text-black font-bold py-2 rounded-lg hover:bg-yellow-500 transition">I Endorse Freedom</button>
+  </div>
+</div>
+
+<script>
+  const popup = document.getElementById('freedom-popup');
+  const closeBtn = document.getElementById('popup-close');
+  const endorseBtn = document.getElementById('popup-endorse');
+  const popupHeader = document.getElementById('popup-header');
+  const popupText = document.getElementById('popup-text');
+
+  // Close popup manually
+  closeBtn.addEventListener('click', () => {
+    popup.style.transform = 'translateX(-200%)';
+    popup.style.opacity = '0';
+  });
+
+  // Endorse button click
+  endorseBtn.addEventListener('click', () => {
+    popupHeader.textContent = "Thank you!";
+    popupText.textContent = "Thank you for endorsing the Mabry Administration";
+    endorseBtn.style.display = 'none'; // hide the button
+
+    // Fade out after 2 seconds
+    setTimeout(() => {
+      popup.style.transform = 'translateX(-200%)';
+      popup.style.opacity = '0';
+    }, 2000);
+  });
+
+  // Animate popup in
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      popup.style.transform = 'translateX(0)';
+      popup.style.opacity = '1';
+    }, 1000);
+  });
+</script>
+
 
 
