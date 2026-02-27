@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Public Releases - St John's Student Representative</title>
+<meta name="description" content="Public releases and file disclosures – advancing transparency at St John's College." />
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+/* CORE VARIABLES */
+:root {
+    --wp--preset--color--white: #FFFFFF;
+    --wp--preset--color--charcoal: #293340;
+    --wp--preset--color--deep-navy-blue: #0D132D;
+    --wp--preset--color--navy-blue: #151A30;
+    --wp--preset--color--gold: #D4AF37;
+    --wp--preset--font-family--instrument-sans: "Instrument Sans", sans-serif;
+    --wp--preset--font-family--instrument-serif: "Instrument Serif", serif;
+    --text-color: #000000;
+    --hr-color: #e0e0e0;
+    --header-text: #000000;
+}
+
+/* RESET & BASE */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background-color: var(--wp--preset--color--white);
+    color: var(--text-color);
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-weight: 400;
+    line-height: 1.6;
+}
+a { 
+    color: var(--text-color); 
+    text-decoration: none; 
+    font-weight: 600;
+    transition: color 0.15s ease;
+}
+a:hover { 
+    color: #444; 
+}
+
+/* HEADER */
+.site-header {
+    background: var(--wp--preset--color--deep-navy-blue);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.header-logo img {
+    height: 45px;
+    width: auto;
+}
+.header-nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.header-nav li {
+    margin: 0;
+}
+.header-nav a {
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+.header-nav a:hover { 
+    opacity: 0.7;
+}
+.mobile-menu-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+}
+
+/* PAGE HEADER */
+.page-header {
+    background: var(--wp--preset--color--white);
+    padding: 140px 40px 40px 40px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.page-header h1 {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-weight: 900;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin: 0 0 8px 0;
+    color: var(--header-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.page-header p {
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+}
+
+/* MAIN CONTENT */
+.site-content {
+    padding: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--wp--preset--color--white);
+}
+.intro-text {
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+    max-width: 800px;
+    font-weight: 400;
+}
+.intro-text p {
+    margin: 0 0 1.2em 0;
+    font-weight: 400;
+}
+
+/* COUNTDOWN SECTION (added with blue background) */
+.countdown-section {
+    background: var(--wp--preset--color--deep-navy-blue);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin: 0 0 50px 0;
+    border-radius: 8px;
+}
+.countdown-title {
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+.countdown-heading {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 30px;
+    color: white;
+}
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.countdown-item {
+    background: rgba(255,255,255,0.1);
+    padding: 20px 15px;
+    min-width: 80px;
+    border-radius: 4px;
+}
+.countdown-number {
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-size: 2rem;
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+}
+.countdown-label {
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-top: 5px;
+    display: block;
+}
+
+/* RELEASES LIST */
+.releases-list {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+.releases-list h2 {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin: 50px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+}
+.releases-list ul {
+    padding-left: 0;
+    list-style: none;
+}
+.releases-list li {
+    margin: 18px 0;
+    font-weight: 400;
+}
+.releases-list a {
+    display: block;
+    font-weight: 400;
+    transition: color 0.15s ease;
+}
+.releases-list a:hover {
+    color: #555;
+}
+.releases-list hr {
+    border: 0;
+    border-top: 1px solid var(--hr-color);
+    margin: 22px 0;
+}
+
+/* FOOTER */
+.site-footer {
+    background: var(--wp--preset--color--white);
+    color: #555;
+    padding: 40px 40px 20px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    font-weight: 400;
+}
+.site-footer a {
+    color: #333;
+    font-weight: 400;
+    transition: color 0.15s ease;
+}
+.site-footer a:hover {
+    color: #111;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-nav { display: none; }
+    .mobile-menu-toggle { display: block; }
+    .site-header { padding: 12px 20px; }
+    .page-header { padding: 110px 20px 30px 20px; }
+    .site-content { padding: 30px 20px; }
+    .countdown-timer { gap: 10px; }
+    .countdown-item { min-width: 65px; padding: 15px 10px; }
+    .countdown-number { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="https://sjcrep.com/" class="header-logo">
+        <img src="https://i.imgur.com/RJzB4iZ.png" alt="St John's Student Representative">
+    </a>
+    <nav class="header-nav">
+        <ul>
+            <li><a href="https://sjcrep.com/news">News</a></li>
+            <li><a href="https://sjcrep.com/coming-soon">Gallery</a></li>
+            <li><a href="https://sjcrep.com/public-releases">Public Releases</a></li>
+            <li><a href="https://sjcrep.com/investments">Investments</a></li>
+            <li><a href="https://sjcrep.com/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    </button>
+</header>
+
+<div class="page-header">
+    <h1>Public Releases</h1>
+    <p>Transparency in Action – School Files and Disclosures</p>
+</div>
+
+<main class="site-content">
+    <div class="intro-text">
+        <p>As part of our commitment to transparency, the following files and documents are publicly released for review completly unredacted.</p>
+    </div>
+
+    <!-- COUNTDOWN SECTION - Placed above the list, with blue background -->
+    <div class="countdown-section">
+        <p class="countdown-title">Transparency Initiative</p>
+        <h2 class="countdown-heading">NEXT BATCH OF SCHOOL FILES RELEASE</h2>
+        <div class="countdown-timer" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="releases-list">
+
+        <h2>First Batch of School Files for Public Release: Unredacted</h2>
+        <ul>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQD06GJjRCC0TJtwFeRAT28zAcT59F_htfc0P4SO6UFbDL8?e=ySrv1i" target="_blank" rel="noopener noreferrer">SJC-24FEB-217</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQAkm0_yPDdESqnh6BTwovaSAQIYGVMDjDbNvswDMO_Xo-s?e=GPydUh" target="_blank" rel="noopener noreferrer">SJC-24MAR-489</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBFvLtzkUU8SZmi0P0voaluAdQwtkiiHc0NVaizXW4W16E?e=Ki0lBl" target="_blank" rel="noopener noreferrer">SJC-24MAY-653</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQB16ID0ogoNSaote1Xg3RRQAb_6miVAS0JBN-8730v-d5I?e=1vxwbe" target="_blank" rel="noopener noreferrer">SJC-24JUN-094</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBsFHS_s2_5RaH_DsANhDGCAZJYVJf5RQy8Sx7sdACQ-HI?e=JPA8EF" target="_blank" rel="noopener noreferrer">SJC-24AUG-821</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQC-I7FNnlSuQ75AnejIx66dAQbpjK8oawqPs01IC7rwd3I?e=GyS17q" target="_blank" rel="noopener noreferrer">SJC-24SEP-305</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQCufMj0skKhQqVSxdTNmOqeARLBNFu3kQ1DWDQtLj5MHL4?e=hVRGC8" target="_blank" rel="noopener noreferrer">SJC-24OCT-576</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQCfZGzwS3V0QIXZNLYWXmTvAXBL91N-PIEeqEQOfbGgrmQ?e=r3WIb0" target="_blank" rel="noopener noreferrer">SJC-24DEC-148</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBB6c9DEKpVRqH-UYsNQs_RAamuVujgn9ltD0I0MYZzsPc?e=u8kzTF" target="_blank" rel="noopener noreferrer">SJC-25FEB-774</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBCrGeOsw7BR4ID-oyRJTvqAbMZwaFsXwRz-gt-rPO6X0A?e=6wBsh2" target="_blank" rel="noopener noreferrer">SJC-25MAR-119</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBtHoi93jkRSoLqEc0HRUMiAYs3VbpRv32oxPKsm39onbU?e=pgEibc" target="_blank" rel="noopener noreferrer">SJC-25MAY-042</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQB5sGL0eLuMQpWRUv1Lf2QhAYKEuuwxHi4_akOlIJqq8R0?e=n5aGO7" target="_blank" rel="noopener noreferrer">SJC-25JUN-308</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBREP8qmh12RYCLhLGawBLiAXEcJiKYce9nNiXwCk5eJ9Q?e=ALQE2o" target="_blank" rel="noopener noreferrer">SJC-25AUG-551</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQC3qF_6IL3sRo1tqF2A-kR1Adbba83lrFhw_ndcuihQcBo?e=XS2X65" target="_blank" rel="noopener noreferrer">SJC-25SEP-927</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQBa5abLHvbjT6lhVnWIHV-HAcd0FITHR95rRJ7GhkkZ3nU?e=Rq6Xry" target="_blank" rel="noopener noreferrer">SJC-25OCT-413</a></li>
+            <hr>
+            <li><a href="https://stjc.sharepoint.com/:b:/s/SJCBoardofTrustees/IQCDC_GQmGWdTZeTm_4TzHnvAShNLInsdAXys-icEgoAtro?e=0XmjSs" target="_blank" rel="noopener noreferrer">SJC-25DEC-682</a></li>
+        </ul>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p>© St John's College Student Representative</p>
+    <p><a href="https://sjcrep.com/contact">Contact</a></p>
+</footer>
+
+<!-- COUNTDOWN JAVASCRIPT -->
+<script>
+// COUNTDOWN TIMER - March 26, 2026 at 9:00 AM (adjust timezone if needed)
+const targetDate = new Date('March 26, 2026 09:00:00').getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    if (distance < 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
