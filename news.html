@@ -5,12 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>News - St John's Student Representative</title>
 <meta name="description" content="Latest news, updates, and achievements from the St John's College student community – powered by transparency and student voice." />
-
 <!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
 <style>
 /* CORE VARIABLES */
 :root {
@@ -25,7 +23,6 @@
     --hr-color: #e0e0e0;
     --header-text: #000000;
 }
-
 /* RESET & BASE */
 * { box-sizing: border-box; }
 body {
@@ -36,17 +33,16 @@ body {
     font-weight: 400;
     line-height: 1.6;
 }
-a { 
-    color: var(--text-color); 
-    text-decoration: none; 
+a {
+    color: var(--text-color);
+    text-decoration: none;
     font-weight: 600;
     transition: color 0.15s ease;
 }
-a:hover { 
-    color: #444; 
+a:hover {
+    color: #444;
 }
-
-/* HEADER (unchanged) */
+/* HEADER */
 .site-header {
     background: var(--wp--preset--color--deep-navy-blue);
     position: fixed;
@@ -82,15 +78,51 @@ a:hover {
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
-.header-nav a:hover { 
+.header-nav a:hover {
     opacity: 0.7;
 }
-.mobile-menu-toggle { 
-    display: none; 
-    background: none; 
-    border: none; 
-    color: white; 
-    cursor: pointer; 
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* ─── MOBILE MENU STYLES ─── */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--wp--preset--color--deep-navy-blue);
+    z-index: 999;
+    padding: 90px 30px 40px;
+    overflow-y: auto;
+}
+.mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+}
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 0 auto;
+    max-width: 400px;
+}
+.mobile-menu a {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 14px 0;
+    display: block;
+    text-align: center;
+}
+.mobile-menu a:hover {
+    color: var(--wp--preset--color--gold);
 }
 
 /* PAGE HEADER */
@@ -115,7 +147,6 @@ a:hover {
     margin: 0;
     color: #333;
 }
-
 /* MAIN CONTENT */
 .site-content {
     padding: 40px;
@@ -133,7 +164,6 @@ a:hover {
     margin: 0 0 1.2em 0;
     font-weight: 400;
 }
-
 /* NEWS LIST */
 .news-list {
     font-size: 1.15rem;
@@ -174,8 +204,7 @@ a:hover {
 .news-list a.read-more:hover {
     text-decoration: underline;
 }
-
-/* FOOTER (unchanged) */
+/* FOOTER */
 .site-footer {
     background: var(--wp--preset--color--white);
     color: #555;
@@ -193,7 +222,6 @@ a:hover {
 .site-footer a:hover {
     color: #111;
 }
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .header-nav { display: none; }
@@ -219,10 +247,21 @@ a:hover {
             <li><a href="https://sjcrep.com/contact">Contact</a></li>
         </ul>
     </nav>
-    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="mobile-toggle">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
     </button>
 </header>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobile-menu">
+    <ul>
+        <li><a href="https://sjcrep.com/news">News</a></li>
+        <li><a href="https://sjcrep.com/coming-soon">Gallery</a></li>
+        <li><a href="https://sjcrep.com/public-releases">Public Releases</a></li>
+        <li><a href="https://sjcrep.com/investments">Investments</a></li>
+        <li><a href="https://sjcrep.com/contact">Contact</a></li>
+    </ul>
+</nav>
 
 <div class="page-header">
     <h1>News</h1>
@@ -234,25 +273,20 @@ a:hover {
         <p>Under Student Representative Dylan Mabry's leadership, we're amplifying student achievements, transparency, and community wins. Here you'll find the latest on academic excellence, cultural events, leadership announcements, and the real impact of student advocacy at St John's College.</p>
         <p>Stay tuned — more updates coming as we continue building a stronger, more inclusive campus voice.</p>
     </div>
-
     <div class="news-list">
-
         <h2>Recent News & Highlights</h2>
-
         <div class="news-item">
             <span class="news-date">February 2026</span>
             <h3 class="news-title">2026 Student Council Announced: A make or break for us all</h3>
             <p class="news-excerpt">Our 2026 Student Council has officially been confirmed and this year marks more than just a new list of names. It represents a reset, a renewed standard, and a commitment to stronger leadership across every House and year level.</p>
             <a href="https://sjcrep.com/student-council" class="read-more">Read More →</a>
         </div>
-
         <div class="news-item">
             <span class="news-date">February 2026</span>
             <h3 class="news-title">Principal's Note</h3>
             <p class="news-excerpt">Kia ora caregivers, families and whānau. The opening weeks of the year at St John’s College have been marked by both deep sadness and uplifting moments of connection, energy and renewal.</p>
             <a href="https://sjcrep.com/principals-note-feb" class="read-more">Read More →</a>
         </div>
-
     </div>
 </main>
 
@@ -260,6 +294,23 @@ a:hover {
     <p>© St John's College Student Representative</p>
     <p><a href="https://sjcrep.com/contact">Contact</a></p>
 </footer>
+
+<script>
+// MOBILE MENU TOGGLE
+const toggleBtn = document.getElementById('mobile-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking any link
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+});
+</script>
 
 </body>
 </html>
