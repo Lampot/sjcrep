@@ -67,7 +67,49 @@ img { max-width: 100%; height: auto; display: block; }
     letter-spacing: 1px;
 }
 .header-nav a:hover { opacity: 0.7; }
-.mobile-menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; }
+.mobile-menu-toggle { 
+    display: none; 
+    background: none; 
+    border: none; 
+    color: white; 
+    cursor: pointer; 
+    padding: 0;
+}
+
+/* MOBILE MENU ─ exact same as homepage & news page */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--wp--preset--color--deep-navy-blue);
+    z-index: 999;
+    padding: 90px 30px 40px;
+    overflow-y: auto;
+}
+.mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+}
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 0 auto;
+    max-width: 400px;
+}
+.mobile-menu a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 14px 0;
+    display: block;
+    text-align: center;
+}
+.mobile-menu a:hover {
+    color: var(--wp--preset--color--gold);
+}
+
 /* HERO / TOPPER – full viewport, video bg, centered content */
 .wp-block-whitehouse-topper {
     position: relative;
@@ -324,10 +366,21 @@ img { max-width: 100%; height: auto; display: block; }
             <li><a href="https://sjcrep.com/contact">Contact</a></li>
         </ul>
     </nav>
-    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="mobile-toggle">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
     </button>
 </header>
+
+<!-- MOBILE MENU – identical to homepage & news -->
+<nav class="mobile-menu" id="mobile-menu">
+    <ul>
+        <li><a href="https://sjcrep.com/news">News</a></li>
+        <li><a href="https://sjcrep.com/coming-soon">Gallery</a></li>
+        <li><a href="https://sjcrep.com/public-releases">Public Releases</a></li>
+        <li><a href="https://sjcrep.com/investments">Investments</a></li>
+        <li><a href="https://sjcrep.com/contact">Contact</a></li>
+    </ul>
+</nav>
 
 <!-- HERO -->
 <div class="wp-block-whitehouse-topper">
@@ -376,8 +429,6 @@ img { max-width: 100%; height: auto; display: block; }
         <div class="footer-logo">
             <img src="https://i.imgur.com/RJzB4iZ.png" alt="St Johns Student Representative" style="height:30px; width:auto;">
         </div>
-    
-        </div>
     </div>
 </footer>
 
@@ -392,7 +443,7 @@ img { max-width: 100%; height: auto; display: block; }
 </div>
 
 <script>
-// HEADER SCROLL – same
+// HEADER SCROLL – same as original
 window.addEventListener('scroll', () => {
     const header = document.getElementById('main-header');
     header.classList.toggle('scrolled', window.scrollY > 50);
@@ -409,25 +460,20 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
 
-// OPTIONAL COUNTDOWN (uncomment if you want to keep it)
-// const targetDate = new Date('April 15, 2026 12:00:00').getTime();
-// function updateCountdown() {
-//     const distance = targetDate - Date.now();
-//     if (distance < 0) {
-//         document.querySelectorAll('#countdown span[id]').forEach(el => el.textContent = '00');
-//         return;
-//     }
-//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-//     document.getElementById('days').textContent = String(days).padStart(2, '0');
-//     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-//     document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-//     document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-// }
-// updateCountdown();
-// setInterval(updateCountdown, 1000);
+// MOBILE MENU TOGGLE – added fix
+const toggleBtn = document.getElementById('mobile-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+});
 
 // SUPPORT POPUP – same logic
 const popup = document.getElementById('support-popup');
