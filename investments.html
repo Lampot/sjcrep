@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery — Coming Soon | St John's Student Representative</title>
+<meta name="description" content="The Gallery section is coming soon. Showcasing moments, events, and achievements from St John's College under student-first leadership." />
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* CORE VARIABLES – same as original */
+:root {
+    --wp--preset--color--white: #FFFFFF;
+    --wp--preset--color--charcoal: #293340;
+    --wp--preset--color--deep-navy-blue: #0D132D;
+    --wp--preset--color--navy-blue: #151A30;
+    --wp--preset--color--gold: #D4AF37;
+    --wp--preset--font-family--instrument-sans: "Instrument Sans", sans-serif;
+    --wp--preset--font-family--instrument-serif: "Instrument Serif", serif;
+    --wp--preset--font-family--nord: "Instrument Sans", sans-serif;
+}
+/* RESET & BASE – same */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background-color: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--charcoal);
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; padding: 0; margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+/* HEADER – identical */
+.site-header {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.site-header.scrolled {
+    background: var(--wp--preset--color--deep-navy-blue);
+    padding: 10px 40px;
+}
+.header-logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+.header-nav ul {
+    display: flex;
+    gap: 20px;
+}
+.header-nav a {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.header-nav a:hover { opacity: 0.7; }
+.mobile-menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; }
+/* HERO / TOPPER – full viewport, video bg, centered content */
+.wp-block-whitehouse-topper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.wp-block-whitehouse-topper__media {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+.wp-block-whitehouse-topper__media video {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.hero-content {
+    z-index: 1;
+    max-width: 900px;
+    padding: 20px;
+    margin-top: 80px;
+}
+.hero-headline {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: clamp(3rem, 7vw, 6rem);
+    margin: 0 0 20px;
+    line-height: 1.05;
+}
+.hero-deck {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin: 0 0 40px;
+    opacity: 0.95;
+}
+.coming-soon-badge {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 18px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.596);
+    color: var(--wp--preset--color--gold);
+    padding: 8px 24px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+/* GO TO HOME BUTTON */
+.btn-home {
+    display: inline-block;
+    background: var(--wp--preset--color--gold);
+    color: var(--wp--preset--color--deep-navy-blue);
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 14px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+    margin-top: 20px;
+}
+.btn-home:hover {
+    background: #e0c04a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212,175,55,0.4);
+    color: var(--wp--preset--color--deep-navy-blue);
+}
+.btn-home:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(212,175,55,0.2);
+}
+/* COUNTDOWN – same style, centered */
+.hero-countdown-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    color: white;
+    pointer-events: none;
+    padding: 0 20px;
+}
+.countdown-title {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.countdown-heading {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    margin: 0 0 30px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
+.countdown-item {
+    padding: 10px 5px;
+    min-width: 80px;
+    backdrop-filter: blur(3px);
+}
+.countdown-number {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.countdown-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-top: 8px;
+    display: block;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+/* MAIN CONTENT – simple message */
+.site-content {
+    padding: 100px 20px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+.justified {
+    text-align: justify;
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+.signature-section {
+    margin: 60px 0;
+}
+.signature-section h2 {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: 2.2rem;
+}
+.signature-section p {
+    font-style: italic;
+    color: #666;
+    font-size: 1.1rem;
+}
+/* FOOTER – same structure, simplified */
+.site-footer {
+    background: var(--wp--preset--color--deep-navy-blue);
+    color: white;
+    padding: 60px 40px 20px;
+    font-size: 14px;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.social-links { display: flex; gap: 15px; }
+.social-links svg { width: 20px; height: 20px; fill: white; opacity: 0.7; }
+.social-links svg:hover { opacity: 1; }
+/* SUPPORT POPUP – same, but message tweaked for gallery context */
+#support-popup {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 340px;
+    background: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--deep-navy-blue);
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    border: 3px solid var(--wp--preset--color--deep-navy-blue);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+#support-popup.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#support-popup h3 {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: 1.4rem;
+    margin: 0 0 14px;
+}
+#support-popup p { font-size: 0.98rem; margin: 0 0 20px; line-height: 1.55; }
+#support-popup .buttons { display: flex; justify-content: flex-end; }
+#support-popup button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+.btn-support {
+    background: var(--wp--preset--color--gold);
+    color: var(--wp--preset--color--deep-navy-blue);
+}
+.btn-support:hover { background: #e0c04a; }
+/* RESPONSIVE – same adjustments */
+@media (max-width: 768px) {
+    .header-nav { display: none; }
+    .mobile-menu-toggle { display: block; }
+    .site-header { padding: 15px 20px; }
+    .header-logo img { height: 40px; }
+    #support-popup {
+        width: 90%;
+        bottom: 20px;
+        left: 5%;
+        right: 5%;
+    }
+    .countdown-number { font-size: clamp(2.5rem, 10vw, 4.5rem); }
+    .btn-home {
+        padding: 12px 28px;
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="main-header">
+    <a href="https://sjcrep.com" class="header-logo">
+        <img src="https://i.imgur.com/RJzB4iZ.png" alt="St Johns Student Representative">
+    </a>
+    <nav class="header-nav">
+        <ul>
+            <li><a href="https://sjcrep.com/news">News</a></li>
+            <li><a href="https://sjcrep.com/coming-soon">Gallery</a></li>
+            <li><a href="https://sjcrep.com/public-releases">Public Releases</a></li>
+            <li><a href="https://sjcrep.com/investments">Investments</a></li>
+            <li><a href="https://sjcrep.com/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    </button>
+</header>
+
+<!-- HERO -->
+<div class="wp-block-whitehouse-topper">
+    <div class="wp-block-whitehouse-topper__media">
+        <video autoplay muted loop playsinline poster="https://via.placeholder.com/1920x1080/0D132D/FFFFFF?text=Gallery+Coming+Soon">
+            <source src="https://i.imgur.com/Ol6xHZF.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="hero-content fade-in-on-scroll">
+        <span class="coming-soon-badge">Coming Soon</span>
+        <p class="hero-deck">Capturing the Golden Age of Student Voice at St John's College – moments, events, victories, and the people making it happen.</p>
+        
+        <!-- GO TO HOME BUTTON -->
+        <a href="https://sjcrep.com/" class="btn-home">Go to Home</a>
+    </div>
+
+    <!-- Optional: keep countdown if you still want it (comment out if not needed) -->
+    <!--
+    <div class="hero-countdown-overlay fade-in-on-scroll">
+        <p class="countdown-title">Gallery Launch</p>
+        <h2 class="countdown-heading">Coming Soon</h2>
+        <div class="countdown-timer" id="countdown">
+            <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+        </div>
+    </div>
+    -->
+</div>
+
+<div class="site-content fade-in-on-scroll">
+    <p class="justified">We're building something special — a visual showcase of student life, cultural events, campus improvements, Māori & Pacifica celebrations, and the real impact of student-first leadership under Dylan Mabry.</p>
+    <p class="justified">Stay tuned — transparency and student empowerment extend to how we share our story visually too.</p>
+
+    <div class="signature-section">
+        <h2>Dylan Mabry</h2>
+        <p>Student Representative – St John's College</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-bottom">
+        <div class="footer-logo">
+            <img src="https://i.imgur.com/RJzB4iZ.png" alt="St Johns Student Representative" style="height:30px; width:auto;">
+        </div>
+    
+        </div>
+    </div>
+</footer>
+
+<!-- SUPPORT POPUP – adapted -->
+<div id="support-popup">
+    <span id="close-x">×</span>
+    <h3>Support the Vision</h3>
+    <p>Stand with students who want more transparency, better campus life, and real student voice at St John's College.</p>
+    <div class="buttons">
+        <button class="btn-support" id="btn-support">I Support Students First</button>
+    </div>
+</div>
+
+<script>
+// HEADER SCROLL – same
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('main-header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// FADE IN – same
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
+
+// OPTIONAL COUNTDOWN (uncomment if you want to keep it)
+// const targetDate = new Date('April 15, 2026 12:00:00').getTime();
+// function updateCountdown() {
+//     const distance = targetDate - Date.now();
+//     if (distance < 0) {
+//         document.querySelectorAll('#countdown span[id]').forEach(el => el.textContent = '00');
+//         return;
+//     }
+//     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//     document.getElementById('days').textContent = String(days).padStart(2, '0');
+//     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+//     document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+//     document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+// }
+// updateCountdown();
+// setInterval(updateCountdown, 1000);
+
+// SUPPORT POPUP – same logic
+const popup = document.getElementById('support-popup');
+const btnSupport = document.getElementById('btn-support');
+const closeX = document.getElementById('close-x');
+
+function hasAgreed() { return localStorage.getItem('supportAgreed') === 'true'; }
+
+if (!hasAgreed()) {
+    setTimeout(() => popup.classList.add('visible'), 4000);
+}
+
+btnSupport.addEventListener('click', () => {
+    localStorage.setItem('supportAgreed', 'true');
+    popup.classList.remove('visible');
+});
+closeX.addEventListener('click', () => popup.classList.remove('visible'));
+</script>
+</body>
+</html>
