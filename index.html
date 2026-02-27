@@ -1,270 +1,715 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> REPRESENTATIVE</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet">
-  <style>
-body { font-family: 'Instrument Serif', serif; background-color: #0a1229; color: white; }
-    .navbar-scrolled { background-color: #0a1229; box-shadow: 0 2px 4px rgba(0,0,0,0.4); }
-    .hero-bg { background: url('https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6346-wpcf_1200x700.jpg') center/cover no-repeat; }
-    .card-hover:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.5); }
-    .overlay-gradient { background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,18,41,0.9)); }
-    .fade-bottom {
-      -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-size: cover;
-      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-      mask-repeat: no-repeat;
-      mask-size: cover;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>St Johns Student Representative</title>
+<meta name="description" content="Student Representative Dylan Mabry - Committed to student empowerment, transparency, and student-first priorities at St John's College." />
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* CORE VARIABLES */
+:root {
+    --wp--preset--color--white: #FFFFFF;
+    --wp--preset--color--charcoal: #293340;
+    --wp--preset--color--deep-navy-blue: #0D132D;
+    --wp--preset--color--navy-blue: #151A30;
+    --wp--preset--color--gold: #D4AF37;
+    --wp--preset--font-family--instrument-sans: "Instrument Sans", sans-serif;
+    --wp--preset--font-family--instrument-serif: "Instrument Serif", serif;
+    --wp--preset--font-family--nord: "Instrument Sans", sans-serif;
+}
+/* RESET & BASE */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    background-color: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--charcoal);
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; padding: 0; margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+/* HEADER */
+.site-header {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s ease;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.site-header.scrolled {
+    background: var(--wp--preset--color--deep-navy-blue);
+    padding: 10px 40px;
+}
+.header-logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+.header-nav ul {
+    display: flex;
+    gap: 20px;
+}
+.header-nav a {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.header-nav a:hover { opacity: 0.7; }
+.mobile-menu-toggle { display: none; background: none; border: none; color: white; cursor: pointer; }
+/* HERO / TOPPER */
+.wp-block-whitehouse-topper {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.wp-block-whitehouse-topper__media {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+}
+.wp-block-whitehouse-topper__media video {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.wp-block-whitehouse-topper__content {
+    z-index: 1;
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 80px;
+}
+.wp-block-whitehouse-topper__headline {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 20px;
+}
+.wp-block-whitehouse-topper__deck p {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+/* CENTERED COUNTDOWN OVERLAY */
+.hero-countdown-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color: white;
+    pointer-events: none;
+    padding: 0 20px;
+    text-align: center;
+}
+.hero-countdown-overlay .countdown-title,
+.hero-countdown-overlay .countdown-heading {
+    max-width: 90vw;
+}
+.countdown-title {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.countdown-heading {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    margin: 0 0 30px 0;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    line-height: 1.1;
+}
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px;
+}
+.countdown-item {
+    padding: 10px 5px;
+    min-width: 70px;
+    backdrop-filter: blur(2px);
+}
+.countdown-number {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.countdown-label {
+    font-family: var(--wp--preset--font-family--instrument-sans);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-top: 8px;
+    display: block;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+/* NEW BUTTON STYLE */
+.cta-button {
+    display: inline-block;
+    padding: 18px 48px;
+    background: var(--wp--preset--color--gold);
+    color: var(--wp--preset--color--deep-navy-blue);
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(212,175,55,0.5);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    margin-top: 40px;
+}
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(255, 196, 0, 0.6);
+    background: #ffc800;
+}
+/* MAIN CONTENT */
+.site-content {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.justified {
+    text-align: justify;
+    font-size: 14px;
+    margin-bottom: 20px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.fade-in-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* SIGNATURE SECTION */
+.signature-section {
+    text-align: center;
+    padding: 40px 0;
+}
+.signature-section h2 {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+.signature-section p {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-style: italic;
+    margin-top: 0;
+    color: #666;
+}
+.signature-img {
+    max-width: 225px;
+    margin: 20px auto;
+}
+/* IMAGE ACCORDION - NOW LINKED */
+.wp-block-whitehouse-image-accordion {
+    display: flex;
+    height: 500px;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.wp-block-whitehouse-image-accordion-item {
+    flex: 1;
+    position: relative;
+    transition: flex 0.5s ease;
+    cursor: pointer;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.wp-block-whitehouse-image-accordion-item:hover {
+    flex: 2;
+}
+.wp-block-whitehouse-image-accordion-item__media {
+    width: 100%; height: 100%;
+}
+.wp-block-whitehouse-image-accordion-item__media img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+.wp-block-whitehouse-image-accordion-item__content {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 20px;
+    color: white;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: right;
+    pointer-events: none;
+}
+.wp-block-whitehouse-image-accordion-item:hover .wp-block-whitehouse-image-accordion-item__content,
+.wp-block-whitehouse-image-accordion-item.active .wp-block-whitehouse-image-accordion-item__content {
+    opacity: 1;
+}
+.wp-block-whitehouse-image-accordion-item__title {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+/* FOOTER */
+.site-footer {
+    background: var(--wp--preset--color--deep-navy-blue);
+    color: white;
+    padding: 60px 40px 20px;
+    font-size: 14px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+.footer-menu h2 {
+    font-family: var(--wp--preset--font-family--nord);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+.footer-menu ul li { margin-bottom: 10px; }
+.footer-menu a { opacity: 0.7; transition: opacity 0.2s; }
+.footer-menu a:hover { opacity: 1; }
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.social-links { display: flex; gap: 15px; }
+.social-links svg { width: 20px; height: 20px; fill: white; opacity: 0.7; }
+.social-links svg:hover { opacity: 1; }
+/* SUPPORT POPUP */
+#support-popup {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 340px;
+    background: var(--wp--preset--color--white);
+    color: var(--wp--preset--color--deep-navy-blue);
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    border: 3px solid var(--wp--preset--color--deep-navy-blue);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    font-family: var(--wp--preset--font-family--instrument-sans);
+}
+#support-popup.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#support-popup h3 {
+    font-family: var(--wp--preset--font-family--instrument-serif);
+    font-size: 1.4rem;
+    margin: 0 0 14px 0;
+    letter-spacing: 0.5px;
+    color: var(--wp--preset--color--deep-navy-blue);
+}
+#support-popup p {
+    font-size: 0.98rem;
+    margin: 0 0 20px 0;
+    line-height: 1.55;
+}
+#support-popup .buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+#support-popup button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-size: 0.95rem;
+}
+#support-popup .btn-support {
+    background: var(--wp--preset--color--gold);
+    color: var(--wp--preset--color--deep-navy-blue);
+    box-shadow: 0 2px 8px rgba(212,175,55,0.3);
+}
+#support-popup .btn-support:hover {
+    background: #e0c04a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212,175,55,0.4);
+}
+#close-x {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--wp--preset--color--deep-navy-blue);
+    opacity: 0.6;
+}
+#close-x:hover {
+    opacity: 1;
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-nav { display: none; }
+    .mobile-menu-toggle { display: block; }
+    .wp-block-whitehouse-image-accordion {
+        flex-direction: column;
+        height: auto;
     }
-  </style>
-<!-- Navbar -->
-<nav id="navbar" class="fixed w-full z-50 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-3">
-      <img src="https://i.imgur.com/wHSCEDM.png" alt="Logo" class="h-10">
-      <h1 class="text-xl font tracking-wide">ST JOHNS STUDENT REPRESENTATIVE</h1>
-    </div>
-    <ul class="flex space-x-6">
-      <li><a href="#admin" class="hover:text-yellow-400 transition">Administration</a></li>
-      <li><a href="https://sjcrep.com/policys" class="hover:text-yellow-400 transition">In Trouble?</a></li>
-      <li><a href="#actions" class="hover:text-yellow-400 transition">Financials</a></li>
-      <li><a href="#priorities" class="hover:text-yellow-400 transition">Priorities</a></li>
-    </ul>
-  </div>
-</nav>
+    .wp-block-whitehouse-image-accordion-item {
+        height: 300px;
+        flex: none;
+    }
+    .wp-block-whitehouse-image-accordion-item:hover {
+        flex: none;
+    }
+    .wp-block-whitehouse-image-accordion-item__content {
+        opacity: 1;
+    }
+    .site-header { padding: 15px 20px; }
+    .header-logo img {
+        height: 40px;
+    }
+    .countdown-timer {
+        gap: 15px;
+    }
+    .countdown-item {
+        min-width: 60px;
+    }
+    .countdown-number {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+    .cta-button {
+        padding: 14px 32px;
+        font-size: 16px;
+        margin-top: 30px;
+    }
+    #support-popup {
+        width: 90%;
+        bottom: 20px;
+        left: 5%;
+        right: 5%;
+    }
+}
+</style>
+</head>
+<body>
 
+<!-- HEADER -->
+<header class="site-header" id="main-header">
+    <a href="#" class="header-logo">
+        <img src="https://i.imgur.com/RJzB4iZ.png" alt="St Johns Student Representative">
+    </a>
+    <nav class="header-nav">
+        <ul>
+            <li><a href="https://sjcrep.com/news">News</a></li>
+            <li><a href="https://sjcrep.com/coming-soon">Gallery</a></li>
+            <li><a href="https://sjcrep.com/public-releases">Public Releases</a></li>
+            <li><a href="https://sjcrep.com/investments">Investments</a></li>
+            <li><a href="https://sjcrep.com/contact">Contact</a></li>
+        </ul>
+    </nav>
+    <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    </button>
+</header>
 
-
-
-<!-- Hero Section -->
-<section class="hero-bg h-screen flex items-center justify-center text-center relative">
-  <div class="overlay-gradient absolute inset-0"></div>
-  <div class="relative z-10 p-10 md:p-20 text-center" data-aos="fade-up">
-    <h2 class="text-5xl md:text-6xl font mb-6">ST JOHNS IS GETTING BACK UP</h2>
-    <p class="text-lg max-w-2xl mx-auto mb-6"> This administration is putting students first, always first. Chosen by students overwhelmingly, We are bringing common sense, logic, and results back to leadership.</p>
-    <a href="#priorities" class="px-6 py-3 border border-white hover:bg-yellow-500 hover:text-black transition rounded-lg">Learn More</a>
-  </div>
-</section>
-<!-- Yellow Banner Section -->
-<section class="w-full bg-yellow-500 py-4">
-  <p class="text-black text-center text-lg font">
-    THIS ADMINISTRATION IS COMMITTED TO TRANSPARENCY, ACCOUNTABILITY, AND PUTTING STUDENTS FIRST, MAKING RESOURCES EASY TO FIND!
-  </p>
-</section>
-<!-- Administration -->
-<section id="admin" class="py-20 bg-[#0a1229] text-center">
-  <h3 class="text-4xl font mb-12" data-aos="fade-down">The Administration</h3>
-  <div class="flex justify-center">
-    <div class="relative max-w-xs w-full" data-aos="zoom-in">
-      <!-- Image container with bottom fade -->
-      <div class="relative">
-        <img src="https://i.imgur.com/UD6LBaT.jpeg" alt="Student Rep" class="w-full h-auto fade-bottom" draggable="false" >
-        <!-- Text overlay at bottom -->
-        <div class="absolute bottom-0 left-0 right-0 p-4 text-left">
-          <h4 class="text-2xl font-semi text-white">Dylan Mabry</h4>
-          <p class="mt-1 text-yellow-400 font">Student Representative</p>
-          <p class="mt-2 text-sm text-white">Chosen overwhelmingly in a LANDSLIDE victory, carrying the voice of St Johns students. Bold, focused, and always putting students first.</p>
+<!-- MAIN CONTENT -->
+<main class="wp-site-blocks">
+    <!-- HERO SECTION WITH CENTERED COUNTDOWN -->
+    <div class="wp-block-whitehouse-topper">
+        <div class="wp-block-whitehouse-topper__media">
+            <video autoplay muted loop playsinline poster="https://via.placeholder.com/1920x1080/0D132D/FFFFFF?text=St+Johns+College">
+                <source src="https://i.imgur.com/Ol6xHZF.mp4" type="video/mp4">
+            </video>
         </div>
-      </div>
+       
+        <!-- CENTERED COUNTDOWN + NEW BUTTON -->
+        <div class="hero-countdown-overlay fade-in-on-scroll">
+            <p class="countdown-title">Transparency Initiative</p>
+            <h2 class="countdown-heading">SCHOOL FILES RELEASE</h2>
+            <div class="countdown-timer" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+
+            <!-- NEW PROMINENT BUTTON -->
+            <a href="https://sjcrep.com/public-releases" class="cta-button">
+                VIEW FIRST BATCH OF FILE RELEASES NOW
+            </a>
+        </div>
+
+        <div class="wp-block-whitehouse-topper__content">
+            <h1 class="wp-block-whitehouse-topper__headline"></h1>
+            <div class="wp-block-whitehouse-topper__deck">
+                <p></p>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
 
-<!-- Know Your Rights Section -->
-<section id="in trouble" class="py-20 px-6 max-w-6xl mx-auto">
-  <a href="http://sjcrep.com/policys" class="group block" data-aos="fade-up">
-    <div class="border-4 border-white relative overflow-hidden h-48">
-      <div class="absolute inset-2 border-2 border-yellow-500 pointer-events-none"></div>
-      <div class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center">
-        <h4 class="text-3xl font text-center text-white">ARE YOU IN TROUBLE? KNOW YOUR RIGHTS!</h4>
-      </div>
+    <div class="site-content">
+        <!-- TEXT CONTENT - STUDENT REP STATEMENT -->
+        <div class="fade-in-on-scroll">
+            <p class="justified">Under the leadership of Student Representative Dylan Mabry, St John's College has surged into a new era of student empowerment, marked by record-setting engagement and unprecedented investment in campus life—fueled by transparency, direct advocacy, and a renewed focus on student-first priorities.</p>
+            <p class="justified">The student body has solidified its position as the driving force behind school culture, with record participation in Māori and Pacifica events, expanded food initiatives, and bold new channels for feedback—ensuring every voice shapes the future of our college.</p>
+            <p class="justified">On campus, decisive action has strengthened student representation: financial disclosures are being prepared for public release, communication between leadership and the student body has never been more direct, and practical wins—from more food options to streamlined event funding—are improving daily life for students across all year levels.</p>
+            <p class="justified">In the wider school community, a doctrine of unity through strength has rebuilt trust, resolved long-standing grievances, and positioned the Student Council as an indispensable partner in school governance. As these achievements compound, we have unmistakably entered a Golden Age of Student Voice at SJC—promising even greater opportunity, inclusion, and impact ahead.</p>
+        </div>
+        <!-- SIGNATURE SECTION -->
+        <div class="signature-section fade-in-on-scroll">
+            <h2>Dylan Mabry</h2>
+            <p>Student Representative - St John's College</p>
+        </div>
+        <!-- IMAGE ACCORDION -->
+        <div class="wp-block-whitehouse-image-accordion fade-in-on-scroll">
+            <a href="https://sjcrep.com/news" class="wp-block-whitehouse-image-accordion-item">
+                <div class="wp-block-whitehouse-image-accordion-item__media">
+                    <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6338-wpcf_1200x700.jpg" alt="News - St John's College">
+                </div>
+                <div class="wp-block-whitehouse-image-accordion-item__content">
+                    <h3 class="wp-block-whitehouse-image-accordion-item__title">News</h3>
+                </div>
+            </a>
+            <a href="https://sjcrep.com/coming-soon" class="wp-block-whitehouse-image-accordion-item">
+                <div class="wp-block-whitehouse-image-accordion-item__media">
+                    <img src="https://prodcdn.sporty.co.nz/cms/11153/newsarticles/150070_wo.jpg" alt="Gallery - St John's College">
+                </div>
+                <div class="wp-block-whitehouse-image-accordion-item__content">
+                    <h3 class="wp-block-whitehouse-image-accordion-item__title">Gallery</h3>
+                </div>
+            </a>
+            <a href="https://sjcrep.com/public-releases" class="wp-block-whitehouse-image-accordion-item">
+                <div class="wp-block-whitehouse-image-accordion-item__media">
+                    <img src="https://twroofing.co.nz/wp-content/uploads/sites/19/2025/04/DJI_20250127133717_0359_D-scaled-1.jpg" alt="Public Releases - St John's">
+                </div>
+                <div class="wp-block-whitehouse-image-accordion-item__content">
+                    <h3 class="wp-block-whitehouse-image-accordion-item__title">Public Releases</h3>
+                </div>
+            </a>
+            <a href="https://sjcrep.com/investments" class="wp-block-whitehouse-image-accordion-item">
+                <div class="wp-block-whitehouse-image-accordion-item__media">
+                    <img src="https://twconstruction.nz/wp-content/uploads/sites/6/2025/04/DJI_20250127133946_0364_D-scaled-1.jpg" alt="Investments - St John's College">
+                </div>
+                <div class="wp-block-whitehouse-image-accordion-item__content">
+                    <h3 class="wp-block-whitehouse-image-accordion-item__title">Investments</h3>
+                </div>
+            </a>
+            <a href="https://sjcrep.com/contact" class="wp-block-whitehouse-image-accordion-item">
+                <div class="wp-block-whitehouse-image-accordion-item__media">
+                    <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6360-wpcf_1200x700.jpg" alt="Contact - St John's Student Representative">
+                </div>
+                <div class="wp-block-whitehouse-image-accordion-item__content">
+                    <h3 class="wp-block-whitehouse-image-accordion-item__title">Contact</h3>
+                </div>
+            </a>
+        </div>
     </div>
-  </a>
-</section>
+</main>
 
-<!-- Executive Actions and News -->
-<section id="actions" class="py-20 px-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-  <!-- Executive Actions -->
- <a href="https://www.stjohns.school.nz/asset/downloadasset?id=1e6b8308-b6d8-4687-bbf9-352296a023ad" target="_blank" 
-    <div class="border-4 border-white relative overflow-hidden">
-      <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6349-wpcf_1200x700.jpg"
-           class="w-full h-96 object-cover block transform transition-transform duration-500 group-hover:scale-105">
-      <div class="absolute inset-2 border-2 border-yellow-500 pointer-events-none"></div>
-      <div class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center">
-        <h4 class="text-3xl font text-center text-white">Our Public Financials</h4>
-      </div>
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div class="footer-menu">
+            <h2>About</h2>
+            <ul>
+                <li><a href="https://sjcrep.com/coming-soon">Administration</a></li>
+                <li><a href="https://sjcrep.com/contact">Contact</a></li>
+                <li><a href="https://sjcrep.com/coming-soon">Internships</a></li>
+                <li><a href="https://sjcrep.com/coming-soon">Stay Informed</a></li>
+            </ul>
+        </div>
+        <div class="footer-menu">
+            <h2>Media</h2>
+            <ul>
+                <li><a href="https://sjcrep.com/news">News</a></li>
+                <li><a href="https://sjcrep.com/coming-soon">Gallery</a></li>
+                <li><a href="https://sjcrep.com/coming-soon">Video Library</a></li>
+                <li><a href="https://sjcrep.com/public-releases">Public Releases</a></li>
+            </ul>
+        </div>
+        <div class="footer-menu">
+            <h2>Initiatives</h2>
+            <ul>
+                <li><a href="https://sjcrep.com/coming-soon">Student Voice</a></li>
+                <li><a href="https://sjcrep.com/investments">Investments</a></li>
+                <li><a href="https://sjcrep.com/coming-soon">Campus Life</a></li>
+                <li><a href="https://sjcrep.com/coming-soon">Events</a></li>
+            </ul>
+        </div>
+        <div class="footer-menu">
+            <h2>Subscribe</h2>
+            <p style="opacity:0.7; margin-bottom:10px;">Get updates directly to your inbox.</p>
+            <form style="display:flex; gap:5px;">
+                <input type="email" placeholder="Email" style="padding:8px; flex:1; border:none; border-radius:2px;">
+                <button type="submit" style="padding:8px 12px; background:white; color:black; border:none; border-radius:2px; cursor:pointer;">Go</button>
+            </form>
+        </div>
     </div>
-  </a>
-
-  <!-- News -->
-  <a href="https://sjcrep.com/coming-soon" class="group block" data-aos="fade-left">
-    <div class="border-4 border-white relative overflow-hidden">
-      <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6360-wpcf_1200x700.jpg"
-           class="w-full h-96 object-cover block transform transition-transform duration-500 group-hover:scale-105">
-      <div class="absolute inset-2 border-2 border-yellow-500 pointer-events-none"></div>
-      <div class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center">
-        <h4 class="text-3xl font text-center text-white">Real Uncensored News</h4>
-      </div>
+    <div class="footer-bottom">
+        <div class="footer-logo">
+            <img src="https://i.imgur.com/RJzB4iZ.png" alt="St Johns Student Representative" style="height:30px; width:auto;">
+        </div>
+        <div class="social-links">
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932Z"/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
+        </div>
     </div>
-  </a>
-</section>
-
-  <!-- Three Images Section -->
-<section id="gallery" class="py-20 bg-[#0a1229] px-6">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 justify-center items-center">
-    <div class="flex-1" data-aos="fade-up">
-      <img src="https://i.imgur.com/zzSHuGz.jpeg" alt="Gallery Image 1" draggable="false" class="rounded-xl w-full object-cover shadow-lg">
-    </div>
-    <div class="flex-1" data-aos="fade-up" data-aos-delay="100">
-      <img src="https://i.imgur.com/K3aHZvI.jpeg" alt="Gallery Image 2" draggable="false" class="rounded-xl w-full object-cover shadow-lg">
-    </div>
-    <div class="flex-1" data-aos="fade-up" data-aos-delay="200">
-      <img src="https://i.imgur.com/FS0cvJv.jpeg" alt="Gallery Image 3" draggable="false" class="rounded-xl w-full object-cover shadow-lg">
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Priorities -->
-<section id="priorities" class="py-20 bg-[#0a1229] flex flex-col md:flex-row items-center justify-center px-6 gap-12">
-  <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6338-wpcf_1200x700.jpg" class="rounded-xl w-full md:w-1/2 card-hover" data-aos="fade-right">
-  <div class="max-w-lg text-left" data-aos="fade-left">
-    <h3 class="text-4xl font mb-6">Our Administrations Priorities</h3>
-    <p class="mb-6">Fixing facilities, making student life stronger, and protecting student rights from opposition. Built on strength, unity, and an overwhelming LANDSLIDE mandate.</p>
-    <a href="http://sjcrep.com/prioritys" class="px-6 py-3 border border-white hover:bg-yellow-500 hover:text-black transition rounded-lg">Read More</a>
-  </div>
-</section>
-
-
-<!-- Projects Section -->
-<section id="projects" class="py-20 px-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-  <!-- Card 1 -->
-  <div class="bg-[#111b3a] rounded-xl overflow-hidden card-hover" data-aos="fade-up">
-    <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6349-wpcf_1200x700.jpg" class="w-full h-56 object-cover">
-    <div class="p-6">
-      <h4 class="text-2xl font mb-2">Strategic Plans & Annual Goals</h4>
-      <p>Creating a caring, inclusive, and sustainable enviornment, to ensure our school stays great!</p>
-      <a href="https://www.stjohns.school.nz/asset/downloadasset?id=2cb55d20-2b53-4283-a53b-ff4fd49c02d6" target="_blank"class="mt-4 inline-block text-yellow-400 hover:underline">Learn More</a>  
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="bg-[#111b3a] rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
-    <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6360-wpcf_1200x700.jpg" class="w-full h-56 object-cover">
-    <div class="p-6">
-      <h4 class="text-2xl font mb-2">Catholic Character Annual Plan</h4>
-      <p>Reccomendations from the 2024 special character external evaluation</p>
-      <a href="https://www.stjohns.school.nz/asset/downloadasset?id=b9bd6312-c5c8-4983-a606-9253c43b9698" target="_blank"class="mt-4 inline-block text-yellow-400 hover:underline">Learn More</a>  
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="bg-[#111b3a] rounded-xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
-    <img src="https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6338-wpcf_1200x700.jpg" class="w-full h-56 object-cover">
-    <div class="p-6">
-      <h4 class="text-2xl font mb-2">Student Voice & Leadership</h4>
-      <p>Encouraging students to participate in decision-making and lead initiatives that affect school life.</p>
-      <a href="https://www.stjohns.school.nz/asset/downloadasset?id=b9bd6312-c5c8-4983-a606-9253c43b9698" target="_blank"class="mt-4 inline-block text-yellow-400 hover:underline">Learn More</a>  
-    </div>
-  </div>
-  </section>
-<iframe data-tally-src="https://tally.so/embed/wvoAX8?hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="237" frameborder="0" marginheight="0" marginwidth="0" title="I WANT MORE"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-  </section>
-<footer class="py-6 text-center bg-[#111b3a]">
-  <p class="text-sm">© 2025 DYLNMBRY | This website is privately owned and operated by Dylan Mabry. It is not affiliated with, endorsed by, or connected to St John's College Hastings or any of its staff, students, or associated entities.
-
-All content on this website represents the personal opinions, views, and intentions of the owner and should not be construed as official statements or positions of St John's College Hastings. No private or confidential information pertaining to the school, its staff, or students is disclosed or intended to be disclosed on this site</p>
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if(window.scrollY > 50) navbar.classList.add('navbar-scrolled');
-    else navbar.classList.remove('navbar-scrolled');
-  });
-</script>
-
-</body>
-</html>
-<!-- Pop-up Corner -->
-<div id="freedom-popup" class="fixed bottom-6 left-6 w-80 md:w-96 bg-cover bg-center rounded-xl overflow-hidden shadow-2xl border-4 border-yellow-400 z-50 transform translate-x-0 translate-y-0 transition-all duration-500"
-     style="background-image: url('https://www.bsmgrouparchitects.co.nz/wp-content/uploads/2019/06/DSC_6346-wpcf_1200x700.jpg');">
-  <div class="bg-black bg-opacity-70 p-6">
-    <div class="flex justify-between items-start">
-      <h4 id="popup-header" class="text-xl font text-yellow-400 mb-2">Support Freedom!</h4>
-      <button id="popup-close" class="text-white font">&times;</button>
+<!-- SUPPORT POPUP -->
+<div id="support-popup">
+    <span id="close-x">×</span>
+    <h3>Stand Together</h3>
+    <p>Stand with 125 other students in supporting our administration's efforts to put <strong>Students First</strong> and be transparent!</p>
+    <div class="buttons">
+        <button class="btn-support" id="btn-support">I Support Students First</button>
     </div>
-    <p id="popup-text" class="text-white mb-4">Click here with 125 other patriots if you stand with our administration to restore St John back on track!</p>
-    <button id="popup-endorse" class="inline-block w-full text-center bg-yellow-400 text-black font py-2 rounded-lg hover:bg-yellow-500 transition">I Want Better!</button>
-  </div>
 </div>
 
 <script>
-  const popup = document.getElementById('freedom-popup');
-  const closeBtn = document.getElementById('popup-close');
-  const endorseBtn = document.getElementById('popup-endorse');
-  const popupHeader = document.getElementById('popup-header');
-  const popupText = document.getElementById('popup-text');
+// HEADER SCROLL EFFECT
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('main-header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
-  // Close popup manually
-  closeBtn.addEventListener('click', () => {
-    popup.style.transform = 'translateX(-200%)';
-    popup.style.opacity = '0';
-  });
+// FADE IN ON SCROLL
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+document.querySelectorAll('.fade-in-on-scroll').forEach(el => observer.observe(el));
 
-  // Endorse button click
-  endorseBtn.addEventListener('click', () => {
-    popupHeader.textContent = "Thank you!";
-    popupText.textContent = "Thank you for endorsing the Mabry Administration";
-    endorseBtn.style.display = 'none'; // hide the button
+// IMAGE ACCORDION INTERACTION
+const accordionItems = document.querySelectorAll('.wp-block-whitehouse-image-accordion-item');
+accordionItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        accordionItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+    });
+});
 
-    // Fade out after 2 seconds
-    setTimeout(() => {
-      popup.style.transform = 'translateX(-200%)';
-      popup.style.opacity = '0';
-    }, 2000);
-  });
+// COUNTDOWN TIMER
+const targetDate = new Date('March 26, 2026 09:00:00').getTime();
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    if (distance < 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
-  // Animate popup in
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      popup.style.transform = 'translateX(0)';
-      popup.style.opacity = '1';
-    }, 1000);
-  });
+// SUPPORT POPUP LOGIC
+const popup = document.getElementById('support-popup');
+const btnSupport = document.getElementById('btn-support');
+const closeX = document.getElementById('close-x');
+
+function hasAgreed() {
+    return localStorage.getItem('supportAgreed') === 'true';
+}
+
+function showPopup() {
+    if (!hasAgreed()) {
+        setTimeout(() => {
+            popup.classList.add('visible');
+        }, 3000);
+    }
+}
+
+btnSupport.addEventListener('click', () => {
+    localStorage.setItem('supportAgreed', 'true');
+    popup.classList.remove('visible');
+});
+
+closeX.addEventListener('click', () => {
+    popup.classList.remove('visible');
+});
+
+showPopup();
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>
